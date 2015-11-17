@@ -1,12 +1,12 @@
 # Create a list of json objects; 1 object per excel sheet row
 #
 # Assume: Excel spreadsheet is a rectangle of data, where the first row is
-# object keys and remaining rows are object values and the desired json 
+# object keys and remaining rows are object values and the desired json
 # is a list of objects. Alternatively, data may be column oriented with
 # col 0 containing key names.
 #
-# Dotted notation: Key row (0) containing firstName, lastName, address.street, 
-# address.city, address.state, address.zip would produce, per row, a doc with 
+# Dotted notation: Key row (0) containing firstName, lastName, address.street,
+# address.city, address.state, address.zip would produce, per row, a doc with
 # first and last names and an embedded doc named address, with the address.
 #
 # Arrays: may be indexed (phones[0].number) or flat (aliases[]). Indexed
@@ -48,7 +48,7 @@ convertValueList = (list) ->
 # Convert values to native types
 # Assume: all values from the excel module are text
 convertValue = (value) ->
-  if isFinite(value)
+  if value != '' and isFinite(value)
     Number(value)
   else
     testVal = value.toLowerCase()
